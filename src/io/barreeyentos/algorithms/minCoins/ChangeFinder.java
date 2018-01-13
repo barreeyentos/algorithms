@@ -27,6 +27,6 @@ import io.barreeyentos.algorithms.util.Pair;
  *  which means 1 coin of value 10, and 1 coin of value 1
  */
 @FunctionalInterface
-public interface MinCoins {
+public interface ChangeFinder {
 	List<Pair<Integer, Integer>> solve(int sum, int... coinValues);
 }

@@ -14,7 +14,7 @@ import io.barreeyentos.algorithms.util.Pair;
  *
  * tl;dr: find all ways to make the sum then find optimal solution
  */
-public class BruteForceImpl implements MinCoins {
+public class BruteForceImpl implements ChangeFinder {
 
     @Override
     public List<Pair<Integer, Integer>> solve(int sum, int... coinValues) {

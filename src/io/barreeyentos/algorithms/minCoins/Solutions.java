@@ -16,7 +16,7 @@ public class Solutions {
         /*
          * brute force takes a long time if you go more than 50ish
          */
-        int sumToFind = 53;
+        int sumToFind = 37;
 
         int[] coins = { 1, 5, 10, 25 };
 
@@ -26,7 +26,7 @@ public class Solutions {
         System.out.println("\n");
 
         long start, end = 0;
-        long bruteForceTime, dynamicProgrammingTime = 0;
+        long bruteForceTime, dynamicProgrammingTime, greedyTime = 0;
 
         BruteForceImpl brute = new BruteForceImpl();
         start = Instant.now().toEpochMilli();
@@ -34,13 +34,22 @@ public class Solutions {
         end = Instant.now().toEpochMilli();
         bruteForceTime = end - start;
 
+        printSolution("Brute Force", bruteForceTime, bruteForceCoins);
+
+        GreedyImpl greedy = new GreedyImpl();
+        start = Instant.now().toEpochMilli();
+        List<Pair<Integer, Integer>> greedyCoins = greedy.solve(sumToFind, coins);
+        end = Instant.now().toEpochMilli();
+        greedyTime = end - start;
+
+        printSolution("Greedy", greedyTime, greedyCoins);
+
         DynamicProgrammingImpl dp = new DynamicProgrammingImpl();
         start = Instant.now().toEpochMilli();
         List<Pair<Integer, Integer>> dynamicProgrammingCoins = dp.solve(sumToFind, coins);
         end = Instant.now().toEpochMilli();
         dynamicProgrammingTime = end - start;
 
-        printSolution("Brute Force", bruteForceTime, bruteForceCoins);
         printSolution("Dynamic Programming Solution", dynamicProgrammingTime, dynamicProgrammingCoins);
 
     }

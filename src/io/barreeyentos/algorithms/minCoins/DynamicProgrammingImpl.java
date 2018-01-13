@@ -14,7 +14,7 @@ import io.barreeyentos.algorithms.util.Pair;
  *
  * tl;dr solve smaller problems and add on to them for a larger solution
  */
-public class DynamicProgrammingImpl implements MinCoins {
+public class DynamicProgrammingImpl implements ChangeFinder {
 
     class CoinSumState {
         int minNumCoins;
