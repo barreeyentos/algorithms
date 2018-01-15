@@ -4,6 +4,9 @@ import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 
+import io.barreeyentos.algorithms.minCoins.impl.BruteForceImpl;
+import io.barreeyentos.algorithms.minCoins.impl.DynamicProgrammingImpl;
+import io.barreeyentos.algorithms.minCoins.impl.GreedyImpl;
 import io.barreeyentos.algorithms.util.Pair;
 
 /*

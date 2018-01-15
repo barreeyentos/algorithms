@@ -1,4 +1,4 @@
-package io.barreeyentos.algorithms.minCoins;
+package io.barreeyentos.algorithms.minCoins.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import io.barreeyentos.algorithms.minCoins.ChangeFinder;
 import io.barreeyentos.algorithms.util.Pair;
 
 /*
