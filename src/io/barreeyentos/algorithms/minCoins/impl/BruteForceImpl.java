@@ -28,21 +28,21 @@ public class BruteForceImpl implements ChangeFinder {
     }
 
     public void solutionHelper(int sum, Set<List<Pair<Integer, Integer>>> allSolutions,
-            List<Pair<Integer, Integer>> coinStates) {
-        int currentSum = calculateSum(coinStates);
+            List<Pair<Integer, Integer>> currentSolution) {
+        int currentSum = calculateSum(currentSolution);
         if (currentSum == sum) {
-            allSolutions.add(coinStates.stream().filter(p -> p.getLeft() != 0).collect(Collectors.toList()));
+            allSolutions.add(currentSolution.stream().filter(p -> p.getLeft() != 0).collect(Collectors.toList()));
             return;
         }
 
         if (currentSum > sum) {
             return;
         }
-        for (int i = 0; i < coinStates.size(); ++i) {
-            List<Pair<Integer, Integer>> updatedStates = new ArrayList<>(coinStates);
-            Pair<Integer, Integer> updateCoin = coinStates.get(i);
-            updatedStates.set(i, Pair.of(updateCoin.getLeft() + 1, updateCoin.getRight()));
-            solutionHelper(sum, allSolutions, updatedStates);
+        for (int i = 0; i < currentSolution.size(); ++i) {
+            List<Pair<Integer, Integer>> updatedSolution = new ArrayList<>(currentSolution);
+            Pair<Integer, Integer> updateCoin = currentSolution.get(i);
+            updatedSolution.set(i, Pair.of(updateCoin.getLeft() + 1, updateCoin.getRight()));
+            solutionHelper(sum, allSolutions, updatedSolution);
         }
 
     }

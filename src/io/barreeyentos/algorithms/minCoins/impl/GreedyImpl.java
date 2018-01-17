@@ -13,7 +13,7 @@ public class GreedyImpl implements ChangeFinder {
     public List<Pair<Integer, Integer>> solve(int sum, int... coinValues) {
         int remainder = sum;
         List<Pair<Integer, Integer>> change = new ArrayList<>();
-        for (int value : reverseSort(coinValues)) {
+        for (int value : descendingSort(coinValues)) {
             if (remainder == 0)
                 return change;
             int numCoins = remainder / value;
@@ -26,29 +26,23 @@ public class GreedyImpl implements ChangeFinder {
         return (remainder == 0) ? change : new ArrayList<>();
     }
 
-    int[] reverseSort(int... coinValues) {
+    int[] descendingSort(int... coinValues) {
         if (coinValues.length <= 1) {
             return coinValues;
         }
-        int[] left = reverseSort(Arrays.copyOfRange(coinValues, 0, coinValues.length / 2));
-        int[] right = reverseSort(Arrays.copyOfRange(coinValues, coinValues.length / 2, coinValues.length));
+        int[] left = descendingSort(Arrays.copyOfRange(coinValues, 0, coinValues.length / 2));
+        int[] right = descendingSort(Arrays.copyOfRange(coinValues, coinValues.length / 2, coinValues.length));
 
         int[] sorted = new int[coinValues.length];
         int leftIndex = 0;
         int rightIndex = 0;
         for (int i = 0; i < sorted.length; i++) {
-            if (leftIndex < left.length) {
-                if (rightIndex < right.length) {
-                    if (left[leftIndex] > right[rightIndex]) {
-                        sorted[i] = left[leftIndex++];
-                    } else {
-                        sorted[i] = right[rightIndex++];
-                    }
-                } else {
-                    sorted[i] = left[leftIndex++];
-                }
-            } else {
+            if (leftIndex < left.length && rightIndex < right.length && left[leftIndex] > right[rightIndex]) {
+                sorted[i] = left[leftIndex++];
+            } else if (leftIndex >= left.length || rightIndex < right.length) {
                 sorted[i] = right[rightIndex++];
+            } else {
+                sorted[i] = left[leftIndex++];
             }
         }
 

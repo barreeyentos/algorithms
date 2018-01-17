@@ -21,7 +21,7 @@ public class Solutions {
          */
         int sumToFind = 37;
 
-        int[] coins = { 1, 5, 10, 25 };
+        int[] coins = { 3, 5, 11, 25 };
 
         System.out.println("Sum to find: " + sumToFind);
         System.out.print("Available coins: ");
@@ -59,7 +59,11 @@ public class Solutions {
 
     public static void printSolution(String algorithm, long duration, List<Pair<Integer, Integer>> solution) {
         System.out.println(algorithm);
-        solution.forEach(p -> System.out.println("\t" + p.getLeft() + " of value " + p.getRight()));
+        if (solution.isEmpty()) {
+            System.out.println("\t NO SOLUTION");
+        } else {
+            solution.forEach(p -> System.out.println("\t" + p.getLeft() + " of value " + p.getRight()));
+        }
         System.out.println("Found solution in " + duration + "ms");
         System.out.println("\n");
     }
